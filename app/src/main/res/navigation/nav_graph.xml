@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.cookingapp.MainFragment"
+        android:label="Main Fragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_pastasFragment"
+            app:destination="@id/pastasFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sandwichesFragment"
+            app:destination="@id/sandwichesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_quickFragment"
+            app:destination="@id/quickFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_worldFragment"
+            app:destination="@id/worldFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addRecipeFragment"
+            app:destination="@id/addRecipeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pastasFragment"
+        android:name="com.example.cookingapp.PastasFragment"
+        android:label="Pastas Fragment"
+        tools:layout="@layout/fragment_pastas" >
+        <action
+            android:id="@+id/action_pastasFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sandwichesFragment"
+        android:name="com.example.cookingapp.SandwichesFragment"
+        android:label="Sandwiches Fragment"
+        tools:layout="@layout/fragment_sandwiches" >
+        <action
+            android:id="@+id/action_sandwichesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/quickFragment"
+        android:name="com.example.cookingapp.QuickFragment"
+        android:label="Quick Fragment"
+        tools:layout="@layout/fragment_quick" >
+        <action
+            android:id="@+id/action_quickFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/worldFragment"
+        android:name="com.example.cookingapp.WorldFragment"
+        android:label="World Fragment"
+        tools:layout="@layout/fragment_world" >
+        <action
+            android:id="@+id/action_worldFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addRecipeFragment"
+        android:name="com.example.cookingapp.AddRecipeFragment"
+        android:label="Add Recipe Fragment"
+        tools:layout="@layout/fragment_add_recipe">
+        <action
+            android:id="@+id/action_addRecipeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
