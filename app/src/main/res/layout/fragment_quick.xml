@@ -6,19 +6,19 @@
     android:background="@android:color/white"
     tools:context=".QuickFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="List of Quick Recipes Goes Here" />
+        android:padding="16dp"
+        tools:listitem="@layout/recipe" />
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back"
-        android:layout_below="@id/editTextDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="16dp" />
 
 </FrameLayout>

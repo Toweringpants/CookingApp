@@ -7,14 +7,19 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.room.Room;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
+    private static RecipeDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        database = Room.databaseBuilder(getApplicationContext(), RecipeDatabase.class, "recipe_database")
+                .fallbackToDestructiveMigration()
+                .build();
         setContentView(R.layout.activity_main);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         if (navHostFragment != null) {
@@ -57,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public static RecipeDatabase getDatabase() {
+        return database;
     }
 
     @Override
