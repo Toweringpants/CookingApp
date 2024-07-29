@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -46,5 +47,9 @@ public class QuickFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.buttonBack).setOnClickListener(v -> navController.navigate(R.id.action_quickFragment_to_mainFragment));
+        Button buttonAddRecipe = getActivity().findViewById(R.id.buttonAddRecipe);
+        if (buttonAddRecipe != null) {
+            buttonAddRecipe.setVisibility(View.GONE);
+        }
     }
 }

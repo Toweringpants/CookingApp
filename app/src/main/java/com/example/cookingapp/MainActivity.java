@@ -3,13 +3,10 @@ package com.example.cookingapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.room.Room;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private static RecipeDatabase database;
@@ -25,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         if (navHostFragment != null) {
             NavController navController = navHostFragment.getNavController();
 
-            FloatingActionButton fabAddRecipe = findViewById(R.id.fabAddRecipe);
-            fabAddRecipe.setOnClickListener(view -> navController.navigate(R.id.action_mainFragment_to_addRecipeFragment));
+            Button buttonAddRecipe = findViewById(R.id.buttonAddRecipe);
+            buttonAddRecipe.setOnClickListener(view -> navController.navigate(R.id.action_mainFragment_to_addRecipeFragment));
 
             Button buttonPastas = findViewById(R.id.button_pastas);
             buttonPastas.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     navController.navigate(R.id.action_mainFragment_to_worldFragment);
                 }
             });
-
         }
-
     }
 
     public static RecipeDatabase getDatabase() {

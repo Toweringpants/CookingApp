@@ -1,7 +1,6 @@
 package com.example.cookingapp;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -9,10 +8,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -46,5 +45,11 @@ public class PastasFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.buttonBack).setOnClickListener(v -> navController.navigate(R.id.action_pastasFragment_to_mainFragment));
+
+        // Hide the Add Recipe button
+        Button buttonAddRecipe = getActivity().findViewById(R.id.buttonAddRecipe);
+        if (buttonAddRecipe != null) {
+            buttonAddRecipe.setVisibility(View.GONE);
+        }
     }
 }

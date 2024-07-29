@@ -70,16 +70,15 @@
         app:navGraph="@navigation/nav_graph"
         app:defaultNavHost="true" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddRecipe"
+    <Button
+        android:id="@+id/buttonAddRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="Add Recipe"
-        android:tint="@android:color/white"
-        app:backgroundTint="@color/orange" />
+        android:text="Add Recipe"
+        android:background="@color/orange"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
