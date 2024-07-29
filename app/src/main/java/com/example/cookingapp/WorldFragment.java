@@ -5,34 +5,52 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.List;
 
 public class WorldFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private RecipeAdapter adapter;
+    private long categoryId;
+    private NavController navController;
 
-    public WorldFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_world, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new RecipeAdapter();
+        recyclerView.setAdapter(adapter);
 
-        Button buttonBack = view.findViewById(R.id.buttonBack);
+        categoryId = 4;
 
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_worldFragment_to_mainFragment);
-            }
-        });
+        navController = NavHostFragment.findNavController(this);
+
+        new Thread(() -> {
+            List<Recipe> recipes = RecipeRepository.getInstance(getContext()).getRecipesByCategory(categoryId);
+            getActivity().runOnUiThread(() -> adapter.submitList(recipes));
+        }).start();
+
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.buttonBack).setOnClickListener(v -> navController.navigate(R.id.action_worldFragment_to_mainFragment));
+        Button buttonAddRecipe = getActivity().findViewById(R.id.buttonAddRecipe);
+        if (buttonAddRecipe != null) {
+            buttonAddRecipe.setVisibility(View.GONE);
+        }
+    }
 }
+

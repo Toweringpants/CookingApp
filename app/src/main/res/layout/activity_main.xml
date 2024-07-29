@@ -6,23 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/recipeBookTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recipe Book"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:padding="16dp"
-        android:background="#CF5B5B"
-        android:textColor="@android:color/white" />
-
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/recipeBookTitle"
         android:layout_marginTop="16dp"
         android:padding="16dp"
         android:columnCount="2"
@@ -83,16 +70,15 @@
         app:navGraph="@navigation/nav_graph"
         app:defaultNavHost="true" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddRecipe"
+    <Button
+        android:id="@+id/buttonAddRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="Add Recipe"
-        android:tint="@android:color/white"
-        app:backgroundTint="@color/orange" />
+        android:text="Add Recipe"
+        android:background="@color/orange"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
